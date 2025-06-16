@@ -31,13 +31,12 @@
       overflow-x: hidden;
     }
     
-    /* Nagłówek – header pozostaje taki jak był, ale za napisem dodajemy szary kwadrat */
+    /* Header – cały pasek czarny; tylko napis "Joanna Art" ma szare tło */
     header {
       position: fixed;
       width: 100%;
-      /* Pasek domyślnie ukryty – pojawia się przy scrollowaniu w górę */
-      top: -100px;
-      background: rgba(60,60,60,0.9);
+      top: -100px; /* pasek domyślnie ukryty */
+      background: #000;
       backdrop-filter: blur(10px);
       z-index: 1000;
       transition: top 0.3s;
@@ -74,7 +73,7 @@
       color: var(--main-color);
     }
     
-    /* Sekcja hero – dodajemy margines od góry 2cm */
+    /* Sekcja hero – dodajemy 2cm margines od góry */
     .hero {
       margin-top: 2cm;
       height: 100vh;
@@ -171,7 +170,7 @@
       transform: scale(1.05);
     }
     
-    /* Sekcja Offers – karty ofert */
+    /* Sekcja Offers – karty ofert; ograniczamy szerokość ofert na PC do 300px, aby były "normalne" */
     #offers {
       padding: 60px 20px 30px;
       max-width: 1000px;
@@ -194,12 +193,16 @@
       margin-bottom: 1rem;
     }
     
-    /* Karty ofert – obrazek w kwadracie oraz opis */
+    /* Ograniczenie szerokości ofert – karty będą miały max szerokość 300px i wycentrowane */
+    #offers .offer {
+      max-width: 300px;
+      margin: 0 auto 20px;
+    }
+    
     .offer {
       background: var(--glass);
       border-radius: 10px;
       overflow: hidden;
-      margin-bottom: 20px;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
     }
     
@@ -241,6 +244,7 @@
       margin-bottom: 20px;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
     }
+    
     .offer.no-image .offer-details {
       padding-left: 15px;
     }
@@ -299,7 +303,7 @@
     
     /* Lightbox/Modal Styles – modal domyślnie ukryty */
     .modal {
-      display: none; /* Modal ukryty na starcie */
+      display: none;
       position: fixed;
       z-index: 2000;
       left: 0;
@@ -336,7 +340,7 @@
     
     @keyframes zoomIn {
       from { transform: scale(0.8); }
-      to { transform: scale(1); }
+      to   { transform: scale(1); }
     }
     
     /* Sekcja Contact – statyczne dane kontaktowe oraz mapa Google */
@@ -361,7 +365,7 @@
       border: 0;
     }
     
-    /* Style dla strzałek w lightboxie */
+    /* Strzałki w lightboxie */
     .arrow {
       position: absolute;
       top: 50%;
@@ -557,7 +561,7 @@
   </div>
 </section>
 
-<!-- Sekcja Contact – statyczne dane kontaktowe oraz mapa Google -->
+<!-- Sekcja Contact – statyczne dane kontaktowe i mapa Google -->
 <section id="contact">
   <h2>Contact Me</h2>
   <div class="contact-info">
@@ -581,7 +585,7 @@
   </div>
 </footer>
 
-<!-- Lightbox Modal z dodanymi strzałkami -->
+<!-- Lightbox Modal – dodano strzałki i obsługę klawiszy -->
 <div id="modal" class="modal">
   <span class="close">&times;</span>
   <img class="modal-content" id="modalImage" alt="Enlarged Image">
@@ -595,7 +599,7 @@
   const closeBtn = document.querySelector(".close");
   const galleryImages = document.querySelectorAll(".gallery img");
   
-  // Przechowujemy obrazy jako tablicę oraz indeks aktualnie wyświetlanego zdjęcia
+  // Przechowujemy indeks aktualnie wyświetlanego obrazu
   let currentIndex = 0;
   const images = Array.from(galleryImages);
   
@@ -608,7 +612,7 @@
   });
   
   document.getElementById("next").addEventListener("click", function(e) {
-    e.stopPropagation(); // nie zamyka modalu
+    e.stopPropagation(); // Zapobiega zamknięciu modalu po kliknięciu strzałki
     currentIndex = (currentIndex + 1) % images.length;
     modalImg.src = images[currentIndex].src;
   });
@@ -626,6 +630,21 @@
   modal.addEventListener("click", function(e) {
     if (e.target === modal) {
       modal.style.display = "none";
+    }
+  });
+  
+  // Dodajemy obsługę klawiszy: strzałki prawe/lewe oraz Escape
+  document.addEventListener("keydown", function(e) {
+    if (modal.style.display === "flex") {
+      if (e.key === "ArrowRight") {
+        currentIndex = (currentIndex + 1) % images.length;
+        modalImg.src = images[currentIndex].src;
+      } else if (e.key === "ArrowLeft") {
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        modalImg.src = images[currentIndex].src;
+      } else if (e.key === "Escape") {
+        modal.style.display = "none";
+      }
     }
   });
   
