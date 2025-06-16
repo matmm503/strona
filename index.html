@@ -91,7 +91,6 @@
       position: absolute;
       bottom: 5%;
       left: 50%;
-      transform: translate(-50%, 0);
       width: 90%;
       max-width: 900px;
       padding: 2rem;
@@ -99,9 +98,10 @@
       border-radius: 20px;
       text-align: center;
       backdrop-filter: blur(15px);
-      opacity: 0; /* Początkowo ukryte */
-      transform: translate(-50%, 0); /* Początkowe położenie */
-      animation: slideUp 3.3s ease-out 1s forwards;
+      opacity: 0;
+      visibility: hidden;
+      transform: translate(-50%, 0);
+      animation: slideUp 3s ease-out 1s forwards; /* ← forwards na końcu! */
       z-index: 10;
     }
     .hero-content h2 {
@@ -258,11 +258,15 @@
       vertical-align: middle;
     }
     @keyframes slideUp {
-      from {
+      0% {
         opacity: 0;
+        visibility: hidden;
         transform: translate(-50%, 0);
       }
-      to {
+      1% {
+        visibility: visible;
+      }
+      100% {
         opacity: 1;
         transform: translate(-50%, -20px);
       }
