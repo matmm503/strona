@@ -70,7 +70,7 @@
     
     .hero {
       height: 100vh;
-      background: url('j.jpg') center/cover no-repeat; /* zmienione tło na j.jpg */
+      background: url('j.jpg') center/cover no-repeat;
       position: relative;
       display: flex;
       align-items: center;
@@ -85,7 +85,7 @@
       pointer-events: none;
     }
     
-    /* Blok hero – napis wycentrowany od początku z animacją slideUp */
+    /* Hero content – wycentrowany blok z napisem oraz delikatna animacja slideUp */
     .hero-content {
       position: absolute;
       bottom: 20%;
@@ -163,7 +163,7 @@
       transform: scale(1.05);
     }
     
-    /* SECTION OFFERS – karty ofert, zdjęcia: 01.jpg..05.jpg dla Wedding Sessions */
+    /* SECTION OFFERS – karty ofert (Wedding Sessions, Portraits, Reportage) */
     #offers {
       padding: 60px 20px 30px;
       max-width: 1000px;
@@ -186,7 +186,7 @@
       margin-bottom: 1rem;
     }
     
-    /* Karty ofert – obrazek jako kwadrat oraz opis */
+    /* Karty ofert – obrazek jako kwadrat z opisem poniżej */
     .offer {
       background: var(--glass);
       border-radius: 10px;
@@ -226,7 +226,7 @@
       margin: 5px 0;
     }
     
-    /* Oferty bez zdjęcia – Portraits, Reportage */
+    /* Oferty bez zdjęcia – Portraits i Reportage */
     .offer.no-image {
       background: var(--glass);
       border-radius: 10px;
@@ -290,9 +290,9 @@
       }
     }
     
-    /* Lightbox/Modal Styles – modal domyślnie ukryty */
+    /* Lightbox/Modal Styles – domyślnie ukryty modal */
     .modal {
-      display: none; /* Ustawiamy modal jako ukryty na starcie */
+      display: none; /* Modal ukryty na starcie */
       position: fixed;
       z-index: 2000;
       left: 0;
@@ -330,6 +330,12 @@
     @keyframes zoomIn {
       from { transform: scale(0.8); }
       to { transform: scale(1); }
+    }
+    
+    /* Dodajemy regułę dla formularza w sekcji Contact, aby był wycentrowany i miał ograniczoną szerokość */
+    #contact form {
+      max-width: 500px;
+      margin: 2rem auto 0;
     }
   </style>
 </head>
