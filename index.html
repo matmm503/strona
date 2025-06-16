@@ -34,8 +34,9 @@
     header {
       position: fixed;
       width: 100%;
-      top: 0;
-      background: rgba(0,0,0,0.5);
+      /* Pasek domyślnie ukryty */
+      top: -100px;
+      background: rgba(0, 0, 0, 0.5);
       backdrop-filter: blur(10px);
       z-index: 1000;
       transition: top 0.3s;
@@ -85,7 +86,7 @@
       pointer-events: none;
     }
     
-    /* Hero content – wycentrowany blok z napisem oraz delikatna animacja slideUp */
+    /* Blok hero – tekst wycentrowany od początku z animacją slideUp */
     .hero-content {
       position: absolute;
       bottom: 20%;
@@ -126,7 +127,7 @@
       background: #ff4c4c;
     }
     
-    /* Odstępy między sekcjami */
+    /* Ogólne odstępy między sekcjami */
     section {
       padding: 60px 20px 30px;
       max-width: 1000px;
@@ -163,7 +164,7 @@
       transform: scale(1.05);
     }
     
-    /* SECTION OFFERS – karty ofert (Wedding Sessions, Portraits, Reportage) */
+    /* SECTION OFFERS – karty ofert */
     #offers {
       padding: 60px 20px 30px;
       max-width: 1000px;
@@ -186,7 +187,7 @@
       margin-bottom: 1rem;
     }
     
-    /* Karty ofert – obrazek jako kwadrat z opisem poniżej */
+    /* Karty ofert – obrazek w kwadracie z opisem poniżej */
     .offer {
       background: var(--glass);
       border-radius: 10px;
@@ -226,7 +227,7 @@
       margin: 5px 0;
     }
     
-    /* Oferty bez zdjęcia – Portraits i Reportage */
+    /* Oferty bez zdjęcia – Portraits, Reportage */
     .offer.no-image {
       background: var(--glass);
       border-radius: 10px;
@@ -290,7 +291,7 @@
       }
     }
     
-    /* Lightbox/Modal Styles – domyślnie ukryty modal */
+    /* Lightbox/Modal Styles – modal domyślnie ukryty */
     .modal {
       display: none; /* Modal ukryty na starcie */
       position: fixed;
@@ -332,10 +333,26 @@
       to { transform: scale(1); }
     }
     
-    /* Dodajemy regułę dla formularza w sekcji Contact, aby był wycentrowany i miał ograniczoną szerokość */
-    #contact form {
+    /* Sekcja Contact – statyczne dane kontaktowe z mapą Google */
+    #contact .contact-info {
       max-width: 500px;
       margin: 2rem auto 0;
+      text-align: left;
+    }
+    
+    #contact .contact-info p {
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+    }
+    
+    #contact .map {
+      margin-top: 1rem;
+    }
+    
+    #contact .map iframe {
+      width: 100%;
+      height: 300px;
+      border: 0;
     }
   </style>
 </head>
@@ -511,13 +528,16 @@
   </div>
 </section>
 
+<!-- Sekcja Contact – statyczne dane kontaktowe oraz mapa Google -->
 <section id="contact">
   <h2>Contact Me</h2>
-  <form action="mailto:matmm503867@gmail.com" method="post" enctype="text/plain">
-    <input type="text" name="name" placeholder="Your Name" required>
-    <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-    <button type="submit">Send Message</button>
-  </form>
+  <div class="contact-info">
+    <p><strong>Email:</strong> matmm503867@gmail.com</p>
+    <p><strong>Phone:</strong> +31 123 456 789</p>
+    <div class="map">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2462.1234567890123!2d4.300000000000000!3d52.07000000000000!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c609ef5400bd5f%3A0xabcdef1234567890!2sVan%20Maerlantlaan%2072%2C%207230%20The%20Hague%2C%20Netherlands!5e0!3m2!1sen!2sus!4v1698340000000" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+  </div>
 </section>
 
 <footer>
