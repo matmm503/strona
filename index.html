@@ -12,36 +12,37 @@
       --text: #f5f5f5;
       --glass: rgba(255,255,255,0.06);
     }
-
+    
     /* Smooth scrolling */
     html {
       scroll-behavior: smooth;
     }
-
+    
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-
+    
     body {
       font-family: 'Outfit', sans-serif;
       background: var(--bg);
       color: var(--text);
       overflow-x: hidden;
     }
-
+    
+    /* Nagłówek – header pozostaje taki jak był, ale za napisem dodajemy szary kwadrat */
     header {
       position: fixed;
       width: 100%;
-      /* Pasek domyślnie ukryty, pojawia się przy scrollowaniu w górę */
+      /* Pasek domyślnie ukryty – pojawia się przy scrollowaniu w górę */
       top: -100px;
-      background: rgba(60, 60, 60, 0.9);
+      background: rgba(60,60,60,0.9);
       backdrop-filter: blur(10px);
       z-index: 1000;
       transition: top 0.3s;
     }
-
+    
     nav {
       display: flex;
       justify-content: space-between;
@@ -50,13 +51,17 @@
       margin: auto;
       padding: 1rem 2rem;
     }
-
+    
     nav h1 {
       font-size: 1.5rem;
       font-weight: 800;
       letter-spacing: 1px;
+      background: rgba(60,60,60,0.9);
+      border-radius: 8px;
+      padding: 4px 8px;
+      display: inline-block;
     }
-
+    
     nav a {
       margin-left: 20px;
       text-decoration: none;
@@ -64,13 +69,14 @@
       font-weight: 600;
       transition: color 0.3s;
     }
-
+    
     nav a:hover {
       color: var(--main-color);
     }
-
+    
+    /* Sekcja hero – dodajemy margines od góry 2cm */
     .hero {
-      margin-top: 2cm; /* Dodajemy 2 cm czarnej przestrzeni od góry */
+      margin-top: 2cm;
       height: 100vh;
       background: url('j.jpg') center/cover no-repeat;
       position: relative;
@@ -78,7 +84,7 @@
       align-items: center;
       justify-content: center;
     }
-
+    
     .hero::after {
       content: '';
       position: absolute;
@@ -86,8 +92,8 @@
       background: linear-gradient(to bottom right, rgba(0,0,0,0.6), rgba(0,0,0,0.4));
       pointer-events: none;
     }
-
-    /* Hero content – blok z napisem wycentrowany i animowany */
+    
+    /* Hero content – blok z napisem wycentrowany od początku z animacją slideUp */
     .hero-content {
       position: absolute;
       bottom: 20%;
@@ -102,17 +108,17 @@
       animation: slideUp 1.3s ease-out forwards;
       z-index: 10;
     }
-
+    
     .hero-content h2 {
       font-size: 2.2rem;
       margin-bottom: 1rem;
     }
-
+    
     .hero-content p {
       font-size: 1.1rem;
       margin-bottom: 2rem;
     }
-
+    
     .btn {
       background: var(--main-color);
       padding: 0.8rem 1.6rem;
@@ -123,48 +129,48 @@
       cursor: pointer;
       transition: background 0.3s;
     }
-
+    
     .btn:hover {
       background: #ff4c4c;
     }
-
-    /* Odstępy między sekcjami */
+    
+    /* Ogólne odstępy między sekcjami */
     section {
       padding: 60px 20px 30px;
       max-width: 1000px;
       margin: auto;
       text-align: center;
     }
-
+    
     section h2 {
       font-size: 2rem;
       margin-bottom: 1.5rem;
     }
-
+    
     section p {
       font-size: 1.05rem;
       margin-bottom: 1rem;
       line-height: 1.6;
     }
-
+    
     .gallery {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
       gap: 12px;
       margin-top: 2rem;
     }
-
+    
     .gallery img {
       width: 100%;
       border-radius: 12px;
       transition: transform 0.3s ease;
       cursor: pointer;
     }
-
+    
     .gallery img:hover {
       transform: scale(1.05);
     }
-
+    
     /* Sekcja Offers – karty ofert */
     #offers {
       padding: 60px 20px 30px;
@@ -172,22 +178,23 @@
       margin: auto;
       text-align: center;
     }
-
+    
     #offers h2 {
       font-size: 2rem;
       margin-bottom: 1.5rem;
     }
-
+    
     .offer-category {
       margin: 40px 0;
       text-align: left;
     }
-
+    
     .offer-category h3 {
       font-size: 1.5rem;
       margin-bottom: 1rem;
     }
-
+    
+    /* Karty ofert – obrazek w kwadracie oraz opis */
     .offer {
       background: var(--glass);
       border-radius: 10px;
@@ -195,14 +202,14 @@
       margin-bottom: 20px;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
     }
-
+    
     .offer img {
       width: 100%;
       aspect-ratio: 1/1;
       object-fit: cover;
       display: block;
     }
-
+    
     .offer-details {
       background: rgba(0, 0, 0, 0.6);
       backdrop-filter: blur(5px);
@@ -210,23 +217,23 @@
       color: white;
       text-align: left;
     }
-
+    
     .offer-details h4 {
       margin: 0 0 5px;
       font-size: 1.2rem;
     }
-
+    
     .offer-details .price {
       font-weight: bold;
       margin-bottom: 5px;
     }
-
+    
     .offer-details ul {
       list-style: none;
       padding-left: 0;
       margin: 5px 0;
     }
-
+    
     .offer.no-image {
       background: var(--glass);
       border-radius: 10px;
@@ -237,7 +244,7 @@
     .offer.no-image .offer-details {
       padding-left: 15px;
     }
-
+    
     footer {
       background: #000;
       text-align: center;
@@ -245,17 +252,17 @@
       font-size: 0.9rem;
       margin-top: 2rem;
     }
-
+    
     footer .social-links a {
       margin: 0 10px;
       display: inline-block;
     }
-
+    
     footer img {
       filter: invert(1);
       vertical-align: middle;
     }
-
+    
     @keyframes slideUp {
       from {
         opacity: 0;
@@ -266,7 +273,7 @@
         transform: translate(-50%, -20px);
       }
     }
-
+    
     @media(max-width: 768px) {
       nav {
         flex-direction: column;
@@ -289,9 +296,10 @@
         text-align: center;
       }
     }
-
+    
+    /* Lightbox/Modal Styles – modal domyślnie ukryty */
     .modal {
-      display: none;
+      display: none; /* Modal ukryty na starcie */
       position: fixed;
       z-index: 2000;
       left: 0;
@@ -302,14 +310,14 @@
       align-items: center;
       justify-content: center;
     }
-
+    
     .modal-content {
       max-width: 90%;
       max-height: 80%;
       animation: zoomIn 0.5s;
       border-radius: 10px;
     }
-
+    
     .close {
       position: absolute;
       top: 15px;
@@ -319,37 +327,61 @@
       font-weight: bold;
       cursor: pointer;
     }
-
+    
     .close:hover,
     .close:focus {
       color: #bbb;
       text-decoration: none;
     }
-
+    
     @keyframes zoomIn {
       from { transform: scale(0.8); }
       to { transform: scale(1); }
     }
-
+    
+    /* Sekcja Contact – statyczne dane kontaktowe oraz mapa Google */
     #contact .contact-info {
       max-width: 500px;
       margin: 2rem auto 0;
       text-align: left;
     }
-
+    
     #contact .contact-info p {
       margin-bottom: 1rem;
       font-size: 1.1rem;
     }
-
+    
     #contact .map {
       margin-top: 1rem;
     }
-
+    
     #contact .map iframe {
       width: 100%;
       height: 300px;
       border: 0;
+    }
+    
+    /* Style dla strzałek w lightboxie */
+    .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 48px;
+      color: #fff;
+      cursor: pointer;
+      padding: 16px;
+      background: rgba(0, 0, 0, 0.4);
+      border-radius: 50%;
+      user-select: none;
+      z-index: 2100;
+    }
+    
+    #prev {
+      left: 20px;
+    }
+    
+    #next {
+      right: 20px;
     }
   </style>
 </head>
@@ -549,9 +581,12 @@
   </div>
 </footer>
 
+<!-- Lightbox Modal z dodanymi strzałkami -->
 <div id="modal" class="modal">
   <span class="close">&times;</span>
   <img class="modal-content" id="modalImage" alt="Enlarged Image">
+  <span id="prev" class="arrow">&#10094;</span>
+  <span id="next" class="arrow">&#10095;</span>
 </div>
 
 <script>
@@ -559,24 +594,41 @@
   const modalImg = document.getElementById("modalImage");
   const closeBtn = document.querySelector(".close");
   const galleryImages = document.querySelectorAll(".gallery img");
-
-  galleryImages.forEach(img => {
+  
+  // Przechowujemy obrazy jako tablicę oraz indeks aktualnie wyświetlanego zdjęcia
+  let currentIndex = 0;
+  const images = Array.from(galleryImages);
+  
+  galleryImages.forEach((img, index) => {
     img.addEventListener("click", function() {
       modal.style.display = "flex";
       modalImg.src = this.src;
+      currentIndex = index;
     });
   });
-
+  
+  document.getElementById("next").addEventListener("click", function(e) {
+    e.stopPropagation(); // nie zamyka modalu
+    currentIndex = (currentIndex + 1) % images.length;
+    modalImg.src = images[currentIndex].src;
+  });
+  
+  document.getElementById("prev").addEventListener("click", function(e) {
+    e.stopPropagation();
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    modalImg.src = images[currentIndex].src;
+  });
+  
   closeBtn.addEventListener("click", function() {
     modal.style.display = "none";
   });
-
+  
   modal.addEventListener("click", function(e) {
     if (e.target === modal) {
       modal.style.display = "none";
     }
   });
-
+  
   let lastScroll = window.pageYOffset;
   window.addEventListener("scroll", function() {
     const currentScroll = window.pageYOffset;
