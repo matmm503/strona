@@ -191,9 +191,13 @@
       margin-top: 2rem;
     }
     
+    footer .social-links a {
+      margin: 0 10px;
+      display: inline-block;
+    }
+    
     footer img {
       filter: invert(1);
-      margin: 0 10px;
       vertical-align: middle;
     }
     
@@ -254,44 +258,6 @@
       from { transform: scale(0.8); }
       to { transform: scale(1); }
     }
-    
-    /* Testimonials Section */
-    #testimonials {
-      background: #1e1e1e;
-      padding: 60px 20px;
-    }
-    
-    .testimonials-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      justify-content: center;
-      margin-top: 2rem;
-    }
-    
-    .testimonial {
-      background: var(--glass);
-      padding: 1.5rem;
-      border-radius: 15px;
-      max-width: 300px;
-      text-align: left;
-      transition: transform 0.3s ease;
-      box-shadow: 0px 4px 15px rgba(0,0,0,0.2);
-    }
-    
-    .testimonial:hover {
-      transform: translateY(-5px);
-    }
-    
-    .testimonial p {
-      font-style: italic;
-      margin-bottom: 0.5rem;
-    }
-    
-    .testimonial span {
-      font-weight: 600;
-      font-size: 0.85rem;
-    }
   </style>
 </head>
 <body>
@@ -303,7 +269,6 @@
       <a href="#about">About</a>
       <a href="#portfolio">Portfolio</a>
       <a href="#services">Services</a>
-      <a href="#testimonials">Testimonials</a>
       <a href="#contact">Contact</a>
     </div>
   </nav>
@@ -377,24 +342,6 @@
   <p>Each session is carefully crafted to capture authentic moments that reflect who you are.</p>
 </section>
 
-<section id="testimonials">
-  <h2>Testimonials</h2>
-  <div class="testimonials-container">
-    <div class="testimonial">
-      <p>"Joanna has a way of capturing moments that feel genuine and full of life. The photos are simply breathtaking."</p>
-      <span>- Client A</span>
-    </div>
-    <div class="testimonial">
-      <p>"The experience was wonderful. Joanna's attention to detail and personal approach made all the difference."</p>
-      <span>- Client B</span>
-    </div>
-    <div class="testimonial">
-      <p>"I felt truly seen and understood. The photos speak to my soul."</p>
-      <span>- Client C</span>
-    </div>
-  </div>
-</section>
-
 <section id="contact">
   <h2>Contact Me</h2>
   <!-- Formularz wysyłający wiadomość przez lokalnego klienta mailowego -->
@@ -408,11 +355,10 @@
 
 <footer>
   <p>&copy; 2025 Joanna Art Photography — All rights reserved.</p>
-  <div style="margin-top: 10px;">
+  <div class="social-links" style="margin-top: 10px;">
     <a href="https://www.instagram.com/joannaart.photo/" target="_blank">
       <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/instagram.svg" alt="Instagram" width="24" />
-    </a>
-    <a href="https://www.facebook.com/JoannaArt.fotografia" target="_blank">
+    </a><a href="https://www.facebook.com/JoannaArt.fotografia" target="_blank">
       <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/facebook.svg" alt="Facebook" width="24" />
     </a>
   </div>
@@ -448,7 +394,7 @@
     }
   });
 
-  // Header ukrywany przy scrollowaniu w dół i pokazywany przy scrollowaniu w górę
+  // Ukrywanie nagłówka przy scrollowaniu w dół i pokazywanie przy scrollowaniu w górę
   let lastScroll = window.pageYOffset;
   window.addEventListener("scroll", function() {
     const currentScroll = window.pageYOffset;
