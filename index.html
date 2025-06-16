@@ -34,9 +34,9 @@
     header {
       position: fixed;
       width: 100%;
-      /* Pasek domyślnie ukryty */
+      /* Pasek domyślnie ukryty – pojawia się przy scrollowaniu w górę */
       top: -100px;
-      background: rgba(0, 0, 0, 0.5);
+      background: rgba(0,0,0,0.5);
       backdrop-filter: blur(10px);
       z-index: 1000;
       transition: top 0.3s;
@@ -86,7 +86,7 @@
       pointer-events: none;
     }
     
-    /* Blok hero – tekst wycentrowany od początku z animacją slideUp */
+    /* Hero content – napis wycentrowany od początku z animacją slideUp */
     .hero-content {
       position: absolute;
       bottom: 20%;
@@ -187,7 +187,7 @@
       margin-bottom: 1rem;
     }
     
-    /* Karty ofert – obrazek w kwadracie z opisem poniżej */
+    /* Karty ofert – obrazek jako kwadrat oraz opis poniżej */
     .offer {
       background: var(--glass);
       border-radius: 10px;
@@ -222,8 +222,9 @@
     }
     
     .offer-details ul {
-      list-style: disc;
-      padding-left: 20px;
+      /* Usunięte punktory */
+      list-style: none;
+      padding-left: 0;
       margin: 5px 0;
     }
     
@@ -333,7 +334,7 @@
       to { transform: scale(1); }
     }
     
-    /* Sekcja Contact – statyczne dane kontaktowe z mapą Google */
+    /* Sekcja Contact – statyczne dane kontaktowe oraz mapa Google */
     #contact .contact-info {
       max-width: 500px;
       margin: 2rem auto 0;
