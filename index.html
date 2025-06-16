@@ -13,7 +13,7 @@
       --glass: rgba(255,255,255,0.06);
     }
     
-    /* Dodanie płynnego scrollowania */
+    /* Smooth scrolling */
     html {
       scroll-behavior: smooth;
     }
@@ -23,14 +23,14 @@
       padding: 0;
       box-sizing: border-box;
     }
-
+    
     body {
       font-family: 'Outfit', sans-serif;
       background: var(--bg);
       color: var(--text);
       overflow-x: hidden;
     }
-
+    
     header {
       position: fixed;
       width: 100%;
@@ -38,8 +38,9 @@
       background: rgba(0,0,0,0.5);
       backdrop-filter: blur(10px);
       z-index: 1000;
+      transition: top 0.3s;
     }
-
+    
     nav {
       display: flex;
       justify-content: space-between;
@@ -48,13 +49,13 @@
       margin: auto;
       padding: 1rem 2rem;
     }
-
+    
     nav h1 {
       font-size: 1.5rem;
       font-weight: 800;
       letter-spacing: 1px;
     }
-
+    
     nav a {
       margin-left: 20px;
       text-decoration: none;
@@ -62,11 +63,11 @@
       font-weight: 600;
       transition: color 0.3s;
     }
-
+    
     nav a:hover {
       color: var(--main-color);
     }
-
+    
     .hero {
       height: 100vh;
       background: url('1.jpg') center/cover no-repeat;
@@ -75,7 +76,7 @@
       justify-content: center;
       position: relative;
     }
-
+    
     .hero::after {
       content: '';
       position: absolute;
@@ -83,7 +84,7 @@
       background: linear-gradient(to bottom right, rgba(0,0,0,0.6), rgba(0,0,0,0.4));
       pointer-events: none;
     }
-
+    
     .hero-content {
       position: relative;
       max-width: 700px;
@@ -95,17 +96,17 @@
       animation: fadeInUp 1.3s ease-out;
       z-index: 10;
     }
-
+    
     .hero-content h2 {
       font-size: 2.2rem;
       margin-bottom: 1rem;
     }
-
+    
     .hero-content p {
       font-size: 1.1rem;
       margin-bottom: 2rem;
     }
-
+    
     .btn {
       background: var(--main-color);
       padding: 0.8rem 1.6rem;
@@ -116,54 +117,54 @@
       cursor: pointer;
       transition: background 0.3s;
     }
-
+    
     .btn:hover {
       background: #ff4c4c;
     }
-
+    
     section {
       padding: 100px 20px 60px;
       max-width: 1000px;
       margin: auto;
       text-align: center;
     }
-
+    
     section h2 {
       font-size: 2rem;
       margin-bottom: 1.5rem;
     }
-
+    
     section p {
       font-size: 1.05rem;
       margin-bottom: 1rem;
       line-height: 1.6;
     }
-
+    
     .gallery {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
       gap: 12px;
       margin-top: 2rem;
     }
-
+    
     .gallery img {
       width: 100%;
       border-radius: 12px;
       transition: transform 0.3s ease;
       cursor: pointer;
     }
-
+    
     .gallery img:hover {
       transform: scale(1.05);
     }
-
+    
     form {
       display: flex;
       flex-direction: column;
       gap: 1rem;
       margin-top: 2rem;
     }
-
+    
     input, textarea {
       padding: 1rem;
       border: none;
@@ -171,7 +172,7 @@
       background: #1e1e1e;
       color: white;
     }
-
+    
     button {
       background: var(--main-color);
       color: white;
@@ -181,7 +182,7 @@
       font-weight: bold;
       cursor: pointer;
     }
-
+    
     footer {
       background: #000;
       text-align: center;
@@ -189,18 +190,18 @@
       font-size: 0.9rem;
       margin-top: 2rem;
     }
-
+    
     footer img {
       filter: invert(1);
       margin: 0 10px;
       vertical-align: middle;
     }
-
+    
     @keyframes fadeInUp {
       from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
     }
-
+    
     @media(max-width: 768px) {
       nav {
         flex-direction: column;
@@ -210,7 +211,7 @@
         font-size: 1.7rem;
       }
     }
-
+    
     /* Lightbox/Modal Styles */
     .modal {
       display: none; 
@@ -223,7 +224,7 @@
       overflow: auto;
       background-color: rgba(0,0,0,0.9);
     }
-
+    
     .modal-content {
       margin: auto;
       display: block;
@@ -232,7 +233,7 @@
       animation: zoomIn 0.5s;
       border-radius: 10px;
     }
-
+    
     .close {
       position: absolute;
       top: 15px;
@@ -242,24 +243,24 @@
       font-weight: bold;
       cursor: pointer;
     }
-
+    
     .close:hover,
     .close:focus {
       color: #bbb;
       text-decoration: none;
     }
-
+    
     @keyframes zoomIn {
       from { transform: scale(0.8); }
       to { transform: scale(1); }
     }
-
+    
     /* Testimonials Section */
     #testimonials {
       background: #1e1e1e;
       padding: 60px 20px;
     }
-
+    
     .testimonials-container {
       display: flex;
       flex-wrap: wrap;
@@ -267,7 +268,7 @@
       justify-content: center;
       margin-top: 2rem;
     }
-
+    
     .testimonial {
       background: var(--glass);
       padding: 1.5rem;
@@ -277,40 +278,19 @@
       transition: transform 0.3s ease;
       box-shadow: 0px 4px 15px rgba(0,0,0,0.2);
     }
-
+    
     .testimonial:hover {
       transform: translateY(-5px);
     }
-
+    
     .testimonial p {
       font-style: italic;
       margin-bottom: 0.5rem;
     }
-
+    
     .testimonial span {
       font-weight: 600;
       font-size: 0.85rem;
-    }
-
-    /* Scroll to Top Button */
-    #scrollToTopBtn {
-      position: fixed;
-      bottom: 40px;
-      right: 40px;
-      background: var(--main-color);
-      color: #fff;
-      border: none;
-      padding: 10px 15px;
-      font-size: 18px;
-      border-radius: 50%;
-      cursor: pointer;
-      display: none;
-      z-index: 2000;
-      transition: background 0.3s;
-    }
-
-    #scrollToTopBtn:hover {
-      background: #ff4c4c;
     }
   </style>
 </head>
@@ -367,7 +347,7 @@
     <img src="16.jpg" alt="Artwork 16">
     <img src="17.jpg" alt="Artwork 17">
     
-    <!-- Specjalne zdjęcie -->
+    <!-- Special image -->
     <img src="84.jpg" alt="Artwork 84">
     
     <!-- Images 18-34 -->
@@ -417,7 +397,8 @@
 
 <section id="contact">
   <h2>Contact Me</h2>
-  <form action="https://formspree.io/f/xwkgrdgw" method="POST">
+  <!-- Formularz wysyłający wiadomość przez lokalnego klienta mailowego -->
+  <form action="mailto:matmm503867@gmail.com" method="post" enctype="text/plain">
     <input type="text" name="name" placeholder="Your Name" required>
     <input type="email" name="email" placeholder="Your Email" required>
     <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
@@ -443,45 +424,41 @@
   <img class="modal-content" id="modalImage" alt="Enlarged Image">
 </div>
 
-<!-- Scroll To Top Button -->
-<button id="scrollToTopBtn" title="Go to top">&#8679;</button>
-
 <script>
   // Lightbox functionality for the gallery
   const modal = document.getElementById("modal");
   const modalImg = document.getElementById("modalImage");
   const closeBtn = document.querySelector(".close");
   const galleryImages = document.querySelectorAll(".gallery img");
-
+  
   galleryImages.forEach(img => {
     img.addEventListener("click", function() {
       modal.style.display = "block";
       modalImg.src = this.src;
     });
   });
-
+  
   closeBtn.addEventListener("click", function() {
     modal.style.display = "none";
   });
-
+  
   modal.addEventListener("click", function(e) {
     if (e.target === modal) {
       modal.style.display = "none";
     }
   });
 
-  // Scroll to Top Button functionality
-  const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+  // Header ukrywany przy scrollowaniu w dół i pokazywany przy scrollowaniu w górę
+  let lastScroll = window.pageYOffset;
   window.addEventListener("scroll", function() {
-    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-      scrollToTopBtn.style.display = "block";
+    const currentScroll = window.pageYOffset;
+    const header = document.querySelector("header");
+    if (currentScroll > lastScroll) {
+      header.style.top = "-100px";
     } else {
-      scrollToTopBtn.style.display = "none";
+      header.style.top = "0";
     }
-  });
-  
-  scrollToTopBtn.addEventListener("click", function() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    lastScroll = currentScroll;
   });
 </script>
 
