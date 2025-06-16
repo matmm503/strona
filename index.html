@@ -31,11 +31,11 @@
       overflow-x: hidden;
     }
     
-    /* Header – cały pasek czarny; tylko napis "Joanna Art" ma szare tło */
+    /* Header – cały pasek czarny; tylko za napisem "Joanna Art" szare tło */
     header {
       position: fixed;
       width: 100%;
-      top: -100px; /* pasek domyślnie ukryty */
+      top: -100px; /* Pasek domyślnie ukryty */
       background: #000;
       backdrop-filter: blur(10px);
       z-index: 1000;
@@ -73,7 +73,7 @@
       color: var(--main-color);
     }
     
-    /* Sekcja hero – dodajemy 2cm margines od góry */
+    /* Sekcja hero – dodajemy 2 cm margines od góry */
     .hero {
       margin-top: 2cm;
       height: 100vh;
@@ -92,7 +92,7 @@
       pointer-events: none;
     }
     
-    /* Hero content – blok z napisem wycentrowany od początku z animacją slideUp */
+    /* Hero content – blok z napisem wycentrowany dnem, animacja slideUp */
     .hero-content {
       position: absolute;
       bottom: 20%;
@@ -170,7 +170,7 @@
       transform: scale(1.05);
     }
     
-    /* Sekcja Offers – karty ofert; ograniczamy szerokość ofert na PC do 300px, aby były "normalne" */
+    /* Sekcja Offers – karty ofert */
     #offers {
       padding: 60px 20px 30px;
       max-width: 1000px;
@@ -193,14 +193,15 @@
       margin-bottom: 1rem;
     }
     
-    /* Ograniczenie szerokości ofert – karty będą miały max szerokość 300px i wycentrowane */
+    /* Ograniczenie szerokości kart ofert do 500px i wycentrowanie */
     #offers .offer {
-      max-width: 300px;
+      max-width: 500px;
       margin: 0 auto 20px;
     }
     
+    /* Zmienione tło ofert – bardziej czarne */
     .offer {
-      background: var(--glass);
+      background: rgba(0,0,0,0.8);
       border-radius: 10px;
       overflow: hidden;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
@@ -214,7 +215,7 @@
     }
     
     .offer-details {
-      background: rgba(0, 0, 0, 0.6);
+      background: rgba(0, 0, 0, 0.8);
       backdrop-filter: blur(5px);
       padding: 10px 15px;
       color: white;
@@ -238,13 +239,12 @@
     }
     
     .offer.no-image {
-      background: var(--glass);
+      background: rgba(0,0,0,0.8);
       border-radius: 10px;
       overflow: hidden;
       margin-bottom: 20px;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
     }
-    
     .offer.no-image .offer-details {
       padding-left: 15px;
     }
@@ -340,7 +340,7 @@
     
     @keyframes zoomIn {
       from { transform: scale(0.8); }
-      to   { transform: scale(1); }
+      to { transform: scale(1); }
     }
     
     /* Sekcja Contact – statyczne dane kontaktowe oraz mapa Google */
@@ -561,7 +561,7 @@
   </div>
 </section>
 
-<!-- Sekcja Contact – statyczne dane kontaktowe i mapa Google -->
+<!-- Sekcja Contact – statyczne dane kontaktowe oraz mapa Google -->
 <section id="contact">
   <h2>Contact Me</h2>
   <div class="contact-info">
@@ -585,7 +585,7 @@
   </div>
 </footer>
 
-<!-- Lightbox Modal – dodano strzałki i obsługę klawiszy -->
+<!-- Lightbox Modal z nawigacją strzałek -->
 <div id="modal" class="modal">
   <span class="close">&times;</span>
   <img class="modal-content" id="modalImage" alt="Enlarged Image">
@@ -612,7 +612,7 @@
   });
   
   document.getElementById("next").addEventListener("click", function(e) {
-    e.stopPropagation(); // Zapobiega zamknięciu modalu po kliknięciu strzałki
+    e.stopPropagation();
     currentIndex = (currentIndex + 1) % images.length;
     modalImg.src = images[currentIndex].src;
   });
@@ -633,7 +633,7 @@
     }
   });
   
-  // Dodajemy obsługę klawiszy: strzałki prawe/lewe oraz Escape
+  // Obsługa klawiatury – strzałki prawe/lewe, Escape
   document.addEventListener("keydown", function(e) {
     if (modal.style.display === "flex") {
       if (e.key === "ArrowRight") {
