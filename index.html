@@ -88,7 +88,7 @@
     /* Przeniesiony niżej tekst na zdjęciu */
     .hero-content {
       position: absolute;
-      bottom: 20%; /* Przesunięcie w dół */
+      bottom: 20%;
       left: 50%;
       transform: translate(-50%, 0);
       max-width: 700px;
@@ -187,7 +187,7 @@
       cursor: pointer;
     }
     
-    /* OFFERS SECTION */
+    /* SEKCJA OFFERS */
     #offers {
       padding: 100px 20px 60px;
       max-width: 1000px;
@@ -246,6 +246,14 @@
       margin: 5px 0;
     }
     
+    /* W kategorii Portraits oraz Reportage nie umieszczamy zdjęć */
+    .offer.no-image {
+      display: block;
+    }
+    .offer.no-image .offer-details {
+      padding-left: 0;
+    }
+    
     footer {
       background: #000;
       text-align: center;
@@ -290,7 +298,7 @@
       }
     }
     
-    /* Lightbox/Modal Styles */
+    /* Lightbox/Modal Styles – wycentrowane zdjęcie */
     .modal {
       display: none; 
       position: fixed; 
@@ -299,13 +307,12 @@
       top: 0;
       width: 100%;
       height: 100%;
-      overflow: auto;
       background-color: rgba(0,0,0,0.9);
+      align-items: center;
+      justify-content: center;
     }
     
     .modal-content {
-      margin: auto;
-      display: block;
       max-width: 90%;
       max-height: 80%;
       animation: zoomIn 0.5s;
@@ -368,7 +375,7 @@
 <section id="portfolio">
   <h2>My Work</h2>
   <div class="gallery">
-    <!-- Images 1-17 -->
+    <!-- Przykładowe zdjęcia portfolio -->
     <img src="1.jpg" alt="Artwork 1">
     <img src="2.jpg" alt="Artwork 2">
     <img src="3.jpg" alt="Artwork 3">
@@ -386,11 +393,7 @@
     <img src="15.jpg" alt="Artwork 15">
     <img src="16.jpg" alt="Artwork 16">
     <img src="17.jpg" alt="Artwork 17">
-    
-    <!-- Special image -->
     <img src="84.jpg" alt="Artwork 84">
-    
-    <!-- Images 18-34 -->
     <img src="18.jpg" alt="Artwork 18">
     <img src="19.jpg" alt="Artwork 19">
     <img src="20.jpg" alt="Artwork 20">
@@ -417,14 +420,14 @@
   <p>Each session is carefully crafted to capture authentic moments that reflect who you are.</p>
 </section>
 
-<!-- NOWA SEKCJA OFFERS -->
+<!-- SEKCJA OFFERS -->
 <section id="offers">
   <h2>Offers</h2>
   
   <div class="offer-category">
     <h3>Wedding Sessions</h3>
     <div class="offer">
-      <img src="offer1.jpg" alt="1 hour pre wedding photoshoot">
+      <img src="01.jpg" alt="1 hour pre wedding photoshoot">
       <div class="offer-details">
         <h4>1 hour pre wedding photoshoot</h4>
         <p class="price">200 euro</p>
@@ -436,7 +439,7 @@
       </div>
     </div>
     <div class="offer">
-      <img src="offer2.jpg" alt="2 hour Loveshoot">
+      <img src="02.jpg" alt="2 hour Loveshoot">
       <div class="offer-details">
         <h4>2 hour Loveshoot</h4>
         <p class="price">300 euro</p>
@@ -447,7 +450,7 @@
       </div>
     </div>
     <div class="offer">
-      <img src="offer3.jpg" alt="4 hour Brown package">
+      <img src="03.jpg" alt="4 hour Brown package">
       <div class="offer-details">
         <h4>4 hour Brown package</h4>
         <p class="price">550 euro</p>
@@ -458,7 +461,7 @@
       </div>
     </div>
     <div class="offer">
-      <img src="offer4.jpg" alt="6 hour Silver package">
+      <img src="04.jpg" alt="6 hour Silver package">
       <div class="offer-details">
         <h4>6 hour Silver package</h4>
         <p class="price">800 euro</p>
@@ -469,7 +472,7 @@
       </div>
     </div>
     <div class="offer">
-      <img src="offer5.jpg" alt="8 hour Gold package">
+      <img src="05.jpg" alt="8 hour Gold package">
       <div class="offer-details">
         <h4>8 hour Gold package</h4>
         <p class="price">1100 euro</p>
@@ -483,8 +486,8 @@
   
   <div class="offer-category">
     <h3>Portraits</h3>
-    <div class="offer">
-      <img src="offer6.jpg" alt="1 hour session - Portraits">
+    <div class="offer no-image">
+      <!-- Oferta bez zdjęcia -->
       <div class="offer-details">
         <h4>1 hour session</h4>
         <p class="price">150 euro</p>
@@ -500,8 +503,8 @@
   
   <div class="offer-category">
     <h3>Reportage</h3>
-    <div class="offer">
-      <img src="offer7.jpg" alt="1 hour Reportage">
+    <div class="offer no-image">
+      <!-- Oferta Reportage – bez zdjęcia -->
       <div class="offer-details">
         <h4>1 hour</h4>
         <p class="price">100 euro</p>
@@ -543,7 +546,7 @@
 </div>
 
 <script>
-  // Lightbox functionality for the gallery
+  // Lightbox functionality dla galerii – ustawienie display na "flex" aby zdjęcie było wycentrowane
   const modal = document.getElementById("modal");
   const modalImg = document.getElementById("modalImage");
   const closeBtn = document.querySelector(".close");
@@ -551,7 +554,7 @@
   
   galleryImages.forEach(img => {
     img.addEventListener("click", function() {
-      modal.style.display = "block";
+      modal.style.display = "flex";
       modalImg.src = this.src;
     });
   });
