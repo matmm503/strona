@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Joanna Art Photography</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --main-color: #ff6b6b;
+      --bg: #121212;
+      --text: #f5f5f5;
+      --glass: rgba(255,255,255,0.06);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    header {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: auto;
+      padding: 1rem 2rem;
+    }
+
+    nav h1 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+
+    nav a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--main-color);
+    }
+
+    .hero {
+      height: 100vh;
+      background: url('1.jpg') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom right, rgba(0,0,0,0.6), rgba(0,0,0,0.4));
+      pointer-events: none; /* ✅ FIX */
+    }
+
+    .hero-content {
+      position: relative;
+      max-width: 700px;
+      padding: 2rem;
+      background: var(--glass);
+      border-radius: 20px;
+      text-align: center;
+      backdrop-filter: blur(15px);
+      animation: fadeInUp 1.3s ease-out;
+      z-index: 10;
+    }
+
+    .hero-content h2 {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero-content p {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+    }
+
+    .btn {
+      background: var(--main-color);
+      padding: 0.8rem 1.6rem;
+      border: none;
+      border-radius: 50px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .btn:hover {
+      background: #ff4c4c;
+    }
+
+    section {
+      padding: 100px 20px 60px;
+      max-width: 1000px;
+      margin: auto;
+      text-align: center;
+    }
+
+    section h2 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    section p {
+      font-size: 1.05rem;
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 12px;
+      margin-top: 2rem;
+    }
+
+    .gallery img {
+      width: 100%;
+      border-radius: 12px;
+      transition: transform 0.3s ease;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    input, textarea {
+      padding: 1rem;
+      border: none;
+      border-radius: 10px;
+      background: #1e1e1e;
+      color: white;
+    }
+
+    button {
+      background: var(--main-color);
+      color: white;
+      padding: 1rem;
+      border-radius: 30px;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    footer {
+      background: #000;
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.9rem;
+      margin-top: 2rem;
+    }
+
+    footer img {
+      filter: invert(1);
+      margin: 0 10px;
+      vertical-align: middle;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media(max-width: 768px) {
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .hero-content h2 {
+        font-size: 1.7rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <h1>Joanna Art</h1>
+    <div>
+      <a href="#about">About</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-content">
+    <h2>Hello, I'm Joanna</h2>
+    <p>Professional portrait & lifestyle photographer based in the Netherlands.</p>
+    <a href="#contact"><button class="btn">Get in Touch</button></a>
+  </div>
+</section>
+
+<section id="about">
+  <h2>About Me</h2>
+  <p>My name is Joanna and I come from Poland. I have been living in the Netherlands for 16 years.</p>
+  <p>You know that friend who is always the photographer of the group? That was me. A few years ago I decided to change my hobby into a job as a professional photographer.</p>
+  <p>At first I was photographing newborns and birthdays. Over time I discovered that portrait photography – capturing emotions and real moments – is what I truly love.</p>
+  <p>I create images that reflect people as they are, during their happiest and most honest moments. This is my passion.</p>
+</section>
+
+<section id="portfolio">
+  <h2>My Work</h2>
+  <div class="gallery">
+    <!-- 1–17 -->
+    <img src="1.jpg">
+    <img src="2.jpg">
+    <img src="3.jpg">
+    <img src="4.jpg">
+    <img src="5.jpg">
+    <img src="6.jpg">
+    <img src="7.jpg">
+    <img src="8.jpg">
+    <img src="9.jpg">
+    <img src="10.jpg">
+    <img src="11.jpg">
+    <img src="12.jpg">
+    <img src="13.jpg">
+    <img src="14.jpg">
+    <img src="15.jpg">
+    <img src="16.jpg">
+    <img src="17.jpg">
+    
+    <!-- 84 (w środku) -->
+    <img src="84.jpg">
+
+    <!-- 18–34 -->
+    <img src="18.jpg">
+    <img src="19.jpg">
+    <img src="20.jpg">
+    <img src="21.jpg">
+    <img src="22.jpg">
+    <img src="23.jpg">
+    <img src="24.jpg">
+    <img src="25.jpg">
+    <img src="26.jpg">
+    <img src="27.jpg">
+    <img src="28.jpg">
+    <img src="29.jpg">
+    <img src="30.jpg">
+    <img src="31.jpg">
+    <img src="32.png">
+    <img src="33.jpg">
+    <img src="34.jpg">
+  </div>
+</section>
+
+<section id="services">
+  <h2>Services</h2>
+  <p>Natural light photography for real people. I offer tailored sessions for portraits, couples, families, babies, personal branding and more.</p>
+  <p>Each session is carefully crafted to capture authentic moments that reflect who you are.</p>
+</section>
+
+<section id="contact">
+  <h2>Contact Me</h2>
+  <form action="https://formspree.io/f/xwkgrdgw" method="POST">
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="email" placeholder="Your Email" required>
+    <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+    <button type="submit">Send Message</button>
+  </form>
+</section>
+
+<footer>
+  <p>&copy; 2025 Joanna Art Photography — All rights reserved.</p>
+  <div style="margin-top: 10px;">
+    <a href="https://www.instagram.com/joannaart.photo/" target="_blank">
+      <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/instagram.svg" alt="Instagram" width="24" />
+    </a>
+    <a href="https://www.facebook.com/JoannaArt.fotografia" target="_blank">
+      <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/facebook.svg" alt="Facebook" width="24" />
+    </a>
+  </div>
+</footer>
+
+</body>
+</html>
