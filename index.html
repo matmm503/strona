@@ -27,12 +27,13 @@
       color: var(--text);
       overflow-x: hidden;
     }
-    /* Header – tło czarne, napis "Joanna Art" na białym prostokącie */
+    /* Header – cały pasek ma czarne tło, widoczny od razu */
     header {
       position: fixed;
       width: 100%;
       top: 0;
       background: #000;
+      backdrop-filter: blur(10px);
       z-index: 1000;
       transition: top 0.3s;
     }
@@ -45,14 +46,16 @@
       padding: 1rem 2rem;
       flex-wrap: nowrap;
     }
+    /* Napis "Joanna Art" – biały prostokąt z zaokrąglonymi rogami, czarna czcionka, bez zawijania */
     nav h1 {
-      font-size: 1.5rem;
+      font-size: 1.3rem;
       font-weight: 800;
       letter-spacing: 1px;
+      white-space: nowrap;
       background: #fff;
       color: #000;
       border-radius: 8px;
-      padding: 4px 8px;
+      padding: 4px 10px;
       display: inline-block;
     }
     nav a {
@@ -66,7 +69,7 @@
     nav a:hover {
       color: var(--main-color);
     }
-    /* Sekcja Hero – margines 2cm od góry */
+    /* Sekcja Hero – dodajemy 2cm margines od góry, tło ustawione na obraz "j.jpg" */
     .hero {
       margin-top: 2cm;
       height: 100vh;
@@ -83,7 +86,7 @@
       background: linear-gradient(to bottom right, rgba(0,0,0,0.6), rgba(0,0,0,0.4));
       pointer-events: none;
     }
-    /* Blok z napisem – wycentrowany z animacją slideUp */
+    /* Blok hero-content – wycentrowany z animacją slideUp */
     .hero-content {
       position: absolute;
       bottom: 20%;
@@ -151,13 +154,13 @@
     .gallery img:hover {
       transform: scale(1.05);
     }
-    /* Ukrywamy zdjęcia dodatkowe – tylko pierwsze 4 są widoczne */
+    /* Początkowo widoczne są tylko 4 zdjęcia, reszta ma klasę "extra" i jest ukryta */
     .gallery img.extra {
       display: none;
       opacity: 0;
       transition: opacity 0.5s ease;
     }
-    /* Przycisk "Show More" */
+    /* Przycisk Show More */
     #showMoreButton {
       margin-top: 20px;
       padding: 0.8rem 1.6rem;
@@ -191,7 +194,7 @@
       font-size: 1.5rem;
       margin-bottom: 1rem;
     }
-    /* Karty ofert – ograniczenie szerokości do 500px i wycentrowanie */
+    /* Karty ofert – ograniczenie szerokości do 500px i wycentrowanie, tło bardziej czarne */
     #offers .offer {
       max-width: 500px;
       margin: 0 auto 20px;
@@ -261,10 +264,19 @@
         transform: translate(-50%, -20px);
       }
     }
+    /* Media query – mniejszy pasek nawigacji na telefonach oraz linki w jednej linii */
     @media(max-width: 768px) {
       nav {
-        flex-direction: row;
+        padding: 0.5rem 1rem;
         justify-content: space-around;
+      }
+      nav h1 {
+        font-size: 1.1rem;
+        padding: 2px 8px;
+      }
+      nav a {
+        margin-left: 10px;
+        font-size: 0.95rem;
       }
       .hero-content {
         bottom: 10%;
@@ -283,7 +295,7 @@
         text-align: center;
       }
     }
-    /* Lightbox/Modal – bez strzałek; obsługa swipe */
+    /* Lightbox/Modal – bez strzałek, z obsługą swipe */
     .modal {
       display: none;
       position: fixed;
@@ -319,7 +331,7 @@
     }
     @keyframes zoomIn {
       from { transform: scale(0.8); }
-      to { transform: scale(1); }
+      to   { transform: scale(1); }
     }
     /* Sekcja Contact – dane kontaktowe i mapa */
     #contact .contact-info {
@@ -512,7 +524,7 @@
   </div>
 </section>
 
-<!-- Sekcja Contact – dane kontaktowe i mapa Google -->
+<!-- Sekcja Contact – statyczne dane kontaktowe i mapa Google -->
 <section id="contact">
   <h2>Contact Me</h2>
   <div class="contact-info">
@@ -536,7 +548,7 @@
   </div>
 </footer>
 
-<!-- Lightbox Modal – bez strzałek; obsługa swipe -->
+<!-- Lightbox Modal – bez strzałek, obsługa swipe -->
 <div id="modal" class="modal">
   <span class="close">&times;</span>
   <img class="modal-content" id="modalImage" alt="Enlarged Image">
@@ -560,7 +572,7 @@
     });
   });
   
-  closeBtn.addEventListener("click", function(e) {
+  closeBtn.addEventListener("click", function() {
     modal.style.display = "none";
   });
   
@@ -570,36 +582,35 @@
     }
   });
   
-  // Swipe detection for mobile in modal
+  // Obsługa swipe w modal
   let xDown = null;
   let yDown = null;
   
-  modal.addEventListener("touchstart", handleTouchStart, false);
-  modal.addEventListener("touchmove", handleTouchMove, false);
-  
-  function handleTouchStart(evt) {
+  modal.addEventListener("touchstart", function(evt) {
     const firstTouch = evt.touches[0];
     xDown = firstTouch.clientX;
     yDown = firstTouch.clientY;
-  }
-  function handleTouchMove(evt) {
+  }, false);
+  
+  modal.addEventListener("touchmove", function(evt) {
     if (!xDown || !yDown) return;
     let xUp = evt.touches[0].clientX;
     let yUp = evt.touches[0].clientY;
     let xDiff = xDown - xUp;
-    let yDiff = yDown - yUp;
-    if (Math.abs(xDiff) > Math.abs(yDiff)) {
-      if (xDiff > 0) { // swipe left -> next image
+    if (Math.abs(xDiff) > 0) { // Swipe poziomy
+      if (xDiff > 0) {
+        // Swipe left – przejdź do nast. zdjęcia
         currentIndex = (currentIndex + 1) % images.length;
         modalImg.src = images[currentIndex].src;
-      } else { // swipe right -> previous image
+      } else {
+        // Swipe right – przejdź do poprzedniego zdjęcia
         currentIndex = (currentIndex - 1 + images.length) % images.length;
         modalImg.src = images[currentIndex].src;
       }
     }
     xDown = null;
     yDown = null;
-  }
+  }, false);
   
   // Show More functionality in My Work section
   const showMoreButton = document.getElementById("showMoreButton");
