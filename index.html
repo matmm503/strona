@@ -1,195 +1,340 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Joanna Art Photography</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #fff;
-      color: #222;
-    }
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      padding: 1rem 2rem;
-      background: rgba(255, 255, 255, 0.95);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 1000;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-    header h1 {
-      font-size: 1.2rem;
-    }
-    nav {
-      display: none;
-    }
-    nav a {
-      margin-left: 1rem;
-      text-decoration: none;
-      color: #444;
-      font-weight: 500;
-    }
-    .menu-toggle {
-      font-size: 1.5rem;
-      cursor: pointer;
-    }
-    .hero {
-      position: relative;
-      width: 100%;
-      height: 100vh;
-      background: url('j.jpg') center/cover no-repeat;
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-    }
-    .hero-content {
-      background: rgba(255, 255, 255, 0.8);
-      padding: 1rem 2rem;
-      margin-bottom: 2rem;
-      border-radius: 12px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.2);
-      max-width: 90%;
-      text-align: center;
-    }
-    section {
-      padding: 4rem 2rem;
-    }
-    .about p {
-      max-width: 700px;
-      margin: 0 auto 1rem;
-      font-size: 1.1rem;
-    }
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 10px;
-    }
-    .gallery img {
-      width: 100%;
-      height: auto;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-    .gallery img:hover {
-      transform: scale(1.05);
-    }
-    footer {
-      background: #111;
-      color: #fff;
-      text-align: center;
-      padding: 2rem;
-    }
-    .socials a {
-      color: #fff;
-      margin: 0 10px;
-      text-decoration: none;
-      font-size: 1.2rem;
-    }
-    @media (min-width: 768px) {
-      nav {
-        display: block !important;
-      }
-      .menu-toggle {
-        display: none;
-      }
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Joanna Art Photography</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --main-color: #ff6b6b;
+      --bg: #121212;
+      --text: #f5f5f5;
+      --glass: rgba(255,255,255,0.06);
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+    header {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      padding: 0.5rem 0;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: auto;
+      padding: 0 2rem;
+      flex-wrap: wrap;
+    }
+    nav h1 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      color: var(--text);
+    }
+    nav div {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    nav a {
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 600;
+      padding: 0.5rem 0.7rem;
+      border-radius: 8px;
+      transition: background 0.3s, color 0.3s;
+    }
+    nav a:hover, nav a:focus {
+      color: var(--main-color);
+      background: rgba(255, 107, 107, 0.2);
+    }
+    .hero {
+      height: 100vh;
+      position: relative;
+      background: var(--bg);
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding-bottom: 3rem;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(to top, rgba(18,18,18,0.95), rgba(18,18,18,0.4) 50%, transparent);
+      z-index: 1;
+    }
+    .hero img {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      max-height: 90vh;
+      width: auto;
+      z-index: 0;
+      border-radius: 12px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 8px rgba(0,0,0,0.7));
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+      padding: 2rem 1.5rem 3rem;
+      background: var(--glass);
+      border-radius: 20px;
+      text-align: center;
+      backdrop-filter: blur(15px);
+      animation: fadeInUp 1.3s ease-out;
+      margin-bottom: 2rem;
+    }
+    .hero-content h2 {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+    }
+    .hero-content p {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+    }
+    .btn {
+      background: var(--main-color);
+      padding: 0.8rem 1.6rem;
+      border: none;
+      border-radius: 50px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn:hover, .btn:focus {
+      background: #ff4c4c;
+      outline: none;
+    }
+    section {
+      padding: 100px 20px 60px;
+      max-width: 1000px;
+      margin: auto;
+      text-align: center;
+    }
+    section h2 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+    }
+    section p {
+      font-size: 1.05rem;
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 12px;
+      margin-top: 2rem;
+    }
+    .gallery img {
+      width: 100%;
+      border-radius: 12px;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 2rem;
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    input, textarea {
+      padding: 1rem;
+      border: none;
+      border-radius: 10px;
+      background: #1e1e1e;
+      color: white;
+      font-size: 1rem;
+    }
+    input:focus, textarea:focus {
+      outline: 2px solid var(--main-color);
+    }
+    button {
+      background: var(--main-color);
+      color: white;
+      padding: 1rem;
+      border-radius: 30px;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover, button:focus {
+      background: #ff4c4c;
+      outline: none;
+    }
+    footer {
+      background: #000;
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.9rem;
+      margin-top: 2rem;
+      color: var(--text);
+    }
+    footer img {
+      filter: invert(1);
+      margin: 0 10px;
+      vertical-align: middle;
+      transition: filter 0.3s;
+    }
+    footer a:hover img {
+      filter: invert(0.5) sepia(1) saturate(5) hue-rotate(340deg);
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @media(max-width: 768px) {
+      nav {
+        justify-content: center;
+      }
+      nav div {
+        gap: 0.5rem;
+      }
+      .hero-content h2 {
+        font-size: 1.7rem;
+      }
+      .hero-content {
+        margin-bottom: 1rem;
+      }
+    }
+    /* Lightbox styles */
+    #lightbox {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0,0,0,0.8);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+    }
+    #lightbox img {
+      max-width: 90vw;
+      max-height: 90vh;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(255, 107, 107, 0.7);
+    }
+    #lightbox:target {
+      display: flex;
+    }
+    #lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      color: white;
+      font-size: 2rem;
+      text-decoration: none;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <h1>Joanna Art Photography</h1>
-    <div class="menu-toggle" onclick="toggleMenu()">&#9776;</div>
-    <nav id="navbar">
-      <a href="#about">About</a>
-      <a href="#gallery">Gallery</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>  <section class="hero">
-    <div class="hero-content">
-      <h2>Hello, I'm Joanna</h2>
-      <p>Professional Photographer based in the Netherlands</p>
-    </div>
-  </section>  <section class="about" id="about">
-    <h2>About Me</h2>
-    <p>
-      My name is Joanna and I come from Poland. I have been living in the Netherlands for 16 years. You know that friend who is always the photographer of the group? That was me. A few years ago I decided to change my hobby into a job as a professional photographer.
-    </p>
-    <p>
-      At first I was photographing newborns, children's birthdays but with time I started taking portraits of women and men. And here I discovered what I wanted to do in my life – capturing the emotions of the people I photograph in their happy and important moments. Or maybe showing them for who they really are, something not many people know about. Creating for others is my passion.
-    </p>
-    <p>
-      I invite you to contact me.
-    </p>
-  </section>  <section id="gallery">
-    <h2 style="text-align: center; margin-bottom: 2rem;">Gallery</h2>
-    <div class="gallery">
-      <!-- Images will be added via JS -->
-    </div>
-  </section>  <section id="contact">
-    <h2>Contact</h2>
-    <p style="text-align: center; margin: 1rem 0;">Get in touch via email or social media</p>
-    <p style="text-align: center;"><a href="mailto:matmm503867@gmail.com">matmm503867@gmail.com</a></p>
-  </section>  <footer>
-    <p>&copy; 2025 Joanna Art Photography</p>
-    <div class="socials">
-      <a href="https://www.instagram.com/joannaart.photo/" target="_blank">Instagram</a>
-      <a href="https://www.facebook.com/JoannaArt.fotografia" target="_blank">Facebook</a>
-    </div>
-  </footer>  <script>
-    function toggleMenu() {
-      const nav = document.getElementById('navbar');
-      nav.style.display = nav.style.display === 'block' ? 'none' : 'block';
-    }
+<header>
+  <nav>
+    <h1>Joanna Art</h1>
+    <div>
+      <a href="#about">About</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+</header>
+<section class="hero">
+  <img src="j.jpg" alt="Portrait of Joanna" />
+  <div class="hero-content">
+    <h2>Hello, I'm Joanna</h2>
+    <p>Professional portrait & lifestyle photographer based in the Netherlands.</p>
+    <a href="#contact" class="btn">Get in Touch</a>
+  </div>
+</section>
 
-    // Lightbox
-    document.addEventListener('click', function (e) {
-      if (e.target.tagName === 'IMG' && e.target.dataset.full) {
-        const img = document.createElement('img');
-        img.src = e.target.dataset.full;
-        img.style.maxWidth = '90vw';
-        img.style.maxHeight = '90vh';
-        const overlay = document.createElement('div');
-        overlay.style.position = 'fixed';
-        overlay.style.top = 0;
-        overlay.style.left = 0;
-        overlay.style.width = '100%';
-        overlay.style.height = '100%';
-        overlay.style.background = 'rgba(0,0,0,0.8)';
-        overlay.style.display = 'flex';
-        overlay.style.alignItems = 'center';
-        overlay.style.justifyContent = 'center';
-        overlay.style.zIndex = 10000;
-        overlay.appendChild(img);
-        overlay.addEventListener('click', () => document.body.removeChild(overlay));
-        document.body.appendChild(overlay);
-      }
-    });
+<section id="about">
+  <h2>About Me</h2>
+  <p>My name is Joanna and I come from Poland. I have been living in the Netherlands for 16 years.</p>
+  <p>You know that friend who is always the photographer of the group? That was me. A few years ago I decided to change my hobby into a job as a professional photographer.</p>
+  <p>At first I was photographing newborns and birthdays. Over time I discovered that portrait photography – capturing emotions and real moments – is what I truly love.</p>
+  <p>I create images that reflect people as they are, during their happiest and most honest moments. This is my passion.</p>
+</section>
 
-    // Add images dynamically in correct order
-    const order = [
-      ...Array.from({ length: 17 }, (_, i) => `${i + 1}`),
-      '84',
-      ...Array.from({ length: 17 }, (_, i) => `${i + 18}`),
-      '32' // png
-    ];
-    const gallery = document.querySelector('.gallery');
-    order.forEach(name => {
-      const img = document.createElement('img');
-      img.src = `${name}.${name === '32' ? 'png' : 'jpg'}`;
-      img.dataset.full = img.src;
-      img.alt = `Photo ${name}`;
-      gallery.appendChild(img);
-    });
-  </script></body>
-</html>
+<section id="portfolio">
+  <h2>My Work</h2>
+  <div class="gallery">
+    <!-- 1–17 -->
+    <img src="1.jpg" alt="Portfolio 1" />
+    <img src="2.jpg" alt="Portfolio 2" />
+    <img src="3.jpg" alt="Portfolio 3" />
+    <img src="4.jpg" alt="Portfolio 4" />
+    <img src="5.jpg" alt="Portfolio 5" />
+    <img src="6.jpg" alt="Portfolio 6" />
+    <img src="7.jpg" alt="Portfolio 7" />
+    <img src="8.jpg" alt="Portfolio 8" />
+    <img src="9.jpg" alt="Portfolio 9" />
+    <img src="10.jpg" alt="Portfolio 10" />
+    <img src="11.jpg" alt="Portfolio 11" />
+    <img src="12.jpg" alt="Portfolio 12" />
+    <img src="13.jpg" alt="Portfolio 13" />
+    <img src="14.jpg" alt="Portfolio 14" />
+    <img src="15.jpg" alt="Portfolio 15" />
+    <img src="16.jpg" alt="Portfolio 16" />
+    <img src="17.jpg" alt="Portfolio 17" />
+    <!-- 84 -->
+    <img src="84.jpg" alt="Portfolio 84" />
+    <!-- 18–34 -->
+    <img src="18.jpg" alt="Portfolio 18" />
+    <img src="19.jpg" alt="Portfolio 19" />
+    <img src="20.jpg" alt="Portfolio 20" />
+    <img src="21.jpg" alt="Portfolio 21" />
+    <img src="22.jpg" alt="Portfolio 22" />
+    <img src="23.jpg" alt="Portfolio 23" />
+    <img src="24.jpg" alt="Portfolio 24" />
+    <img src="25.jpg" alt="Portfolio 25" />
+    <img src="26.jpg" alt="Portfolio 26" />
+    <img src="27.jpg" alt="Portfolio 27" />
+    <img src="28.jpg" alt="Portfolio 28" />
+    <img src="29.jpg" alt="Portfolio 29" />
+    <img src="30.jpg" alt="Portfolio 30" />
+    <img src="31.jpg" alt="Portfolio 31" />
+    <img src="32.png" alt="Portfolio 32" />
+    <img src="33.jpg" alt="Portfolio 33" />
+    <img src="34.jpg" alt="Portfolio 34" />
+  </div>
+</section>
+
+<section id="services">
+  <h2>Services</h2>
+  <p>Natural light photography for real people. I offer tailored sessions for portraits, couples, families, babies, personal branding and
