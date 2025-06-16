@@ -70,7 +70,7 @@
     
     .hero {
       height: 100vh;
-      background: url('1.jpg') center/cover no-repeat;
+      background: url('j.jpg') center/cover no-repeat; /* zmienione tło na j.jpg */
       position: relative;
       display: flex;
       align-items: center;
@@ -85,8 +85,7 @@
       pointer-events: none;
     }
     
-    /* Blok hero – napis jest wycentrowany od początku 
-       i animacja slideUp przesuwa go delikatnie do góry */
+    /* Blok hero – napis wycentrowany od początku z animacją slideUp */
     .hero-content {
       position: absolute;
       bottom: 20%;
@@ -127,7 +126,7 @@
       background: #ff4c4c;
     }
     
-    /* Mniejsze odstępy między sekcjami */
+    /* Odstępy między sekcjami */
     section {
       padding: 60px 20px 30px;
       max-width: 1000px;
@@ -164,8 +163,7 @@
       transform: scale(1.05);
     }
     
-    /* SECTION OFFERS – karty ofert, zdjęcia: 01.jpg, 02.jpg, … 05.jpg w Wedding Sessions;
-       Portraits oraz Reportage – oferty bez zdjęcia */
+    /* SECTION OFFERS – karty ofert, zdjęcia: 01.jpg..05.jpg dla Wedding Sessions */
     #offers {
       padding: 60px 20px 30px;
       max-width: 1000px;
@@ -188,7 +186,7 @@
       margin-bottom: 1rem;
     }
     
-    /* Karty ofert – obrazek jako kwadrat oraz opis z lekkim blurem */
+    /* Karty ofert – obrazek jako kwadrat oraz opis */
     .offer {
       background: var(--glass);
       border-radius: 10px;
@@ -292,9 +290,9 @@
       }
     }
     
-    /* Lightbox/Modal Styles – zdjęcie wycentrowane */
+    /* Lightbox/Modal Styles – modal domyślnie ukryty */
     .modal {
-      display: none; /* Domyślnie ukryty */
+      display: none; /* Ustawiamy modal jako ukryty na starcie */
       position: fixed;
       z-index: 2000;
       left: 0;
@@ -302,7 +300,6 @@
       width: 100%;
       height: 100%;
       background-color: rgba(0,0,0,0.9);
-      display: flex;
       align-items: center;
       justify-content: center;
     }
