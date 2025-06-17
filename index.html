@@ -635,24 +635,13 @@
     });
   }
   
-  let header = document.querySelector('header');
-  let lastScrollY = window.scrollY;
-  let timeoutId;
-  
-  window.addEventListener('scroll', () => {
-    clearTimeout(timeoutId); // resetujemy timer przy każdym scrollu
-  
-    if (window.scrollY < lastScrollY) {
-      // scroll w górę - ustawiamy timeout na 2 sekundy zanim ukryć
-      timeoutId = setTimeout(() => {
-        header.style.top = '-100px'; // chowamy pasek (przykład)
-      }, 2000);
-    } else {
-      // scroll w dół - pokazujemy od razu
-      header.style.top = '0';
-    }
-  
-    lastScrollY = window.scrollY;
+  // Header visibility on scroll
+  let lastScroll = window.pageYOffset;
+  window.addEventListener("scroll", function() {
+    const currentScroll = window.pageYOffset;
+    const header = document.querySelector("header");
+    header.style.top = currentScroll > lastScroll ? "-100px" : "0";
+    lastScroll = currentScroll;
   });
 </script>
 
