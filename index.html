@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Joanna Art Photography</title>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
   <style>
     :root {
       --main-color: #ff6b6b;
@@ -26,6 +27,8 @@
       background: var(--bg);
       color: var(--text);
       overflow-x: hidden;
+      margin: 0;
+      padding: 0;
     }
     /* Header – cały pasek ma czarne tło, widoczny od razu */
     header {
@@ -71,11 +74,13 @@
     }
     /* Sekcja Hero – dodajemy 2cm margines od góry, tło ustawione na obraz "j.jpg" */
     .hero {
-      background-image: url('j.jpg');
-      background-size: 100% auto;
-      background-repeat: no-repeat;
-      background-position: center;
+      margin-top: 4px;
       height: 100vh;
+      background: url('j.jpg') center/cover no-repeat;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     .hero::after {
       content: '';
