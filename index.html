@@ -6,6 +6,11 @@
   <title>Joanna Art Photography</title>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
+    a.no-style {
+      color: inherit;        /* dziedziczy kolor tekstu, więc nie zmienia koloru */
+      text-decoration: none; /* usuwa podkreślenie */
+      cursor: text;          /* kursor jak do tekstu, a nie jak do linku */
+    }
     :root {
       --main-color: #ff6b6b;
       --bg: #121212;
@@ -71,7 +76,7 @@
     }
     /* Sekcja Hero – dodajemy 2cm margines od góry, tło ustawione na obraz "j.jpg" */
     .hero {
-      margin-top: 20px;
+      margin-top: 60px;
       height: 100vh;
       background: url('j.jpg') center/cover no-repeat;
       position: relative;
