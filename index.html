@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Joanna Art Photography</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7395228231921584"
+     crossorigin="anonymous"></script>
+  <style>
+    .custom-form-container {
+      background-color: #000;
+      color: #fff;
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 0 25px rgba(255, 255, 255, 0.12);
+      max-width: 450px;
+      margin: 2rem auto;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+  
+    .custom-form-label {
+      display: block;
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+  
+    .custom-form-input,
+    .custom-form-textarea {
+      width: 100%;
+      padding: 0.9rem 1rem;
+      margin-top: 0.4rem;
+      background-color: #111;
+      border: 1px solid #444;
+      border-radius: 8px;
+      color: #fff;
+      font-size: 1rem;
+      transition: border 0.3s, box-shadow 0.3s;
+      outline: none;
+    }
+  
+    .custom-form-input:focus,
+    .custom-form-textarea:focus {
+      border-color: #fff;
+      box-shadow: 0 0 6px rgba(255, 255, 255, 0.4);
+    }
+  
+    .custom-form-textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+  
+    .custom-form-button {
+      background-color: #fff;
+      color: #000;
+      border: none;
+      padding: 0.9rem 1.5rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+      width: 100%;
+      margin-top: 1rem;
+      font-size: 1rem;
+    }
+  
+    .custom-form-button:hover {
+      background-color: #e1e1e1;
+    }
+    
+    a.no-style {
+      color: inherit;       
+      text-decoration: none;
+      cursor: text;          
+    }
+    :root {
+      --main-color: #ff6b6b;
+      --bg: #121212;
+      --text: #f5f5f5;
+      --glass: rgba(255,255,255,0.06);
+    }
+    /* Smooth scrolling */
+    html {
+      scroll-behavior: smooth;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+    /* Header */
+    header {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      background: #000;
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      transition: top 0.3s;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: auto;
+      padding: 1rem 2rem;
+      flex-wrap: nowrap;
+    }
+    /* logo okno */
+    nav h1 {
+      font-size: 1.3rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      white-space: nowrap;
+      background: #000;
+      color: #000;
+      border-radius: 8px;
+      padding: 4px 10px;
+      display: inline-block;
+    }
+    nav a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 600;
+      transition: color 0.3s;
+      white-space: nowrap;
+    }
+    nav a:hover {
+      color: var(--main-color);
+    }
+    /* Sekcja Hero  ......................... */
+    .hero {
+      margin-top: 60px;
+      height: 87vh;
+      background: url('j.jpg') center/cover no-repeat;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom right, rgba(0,0,0,0.3), rgba(0,0,0,0.1));
+      pointer-events: none;    
+    }
+
+    .hero-content {
+      position: absolute;
+      bottom: 5%;
+      left: 50%;
+      width: 90%;
+      max-width: 900px;
+      padding: 2rem;
+      background: var(--glass);
+      border-radius: 20px;
+      text-align: center;
+      backdrop-filter: blur(15px);
+      opacity: 0;
+      visibility: hidden;
+      transform: translate(-50%, 0);
+      animation: slideUp 4s ease-out 1s forwards;
+      z-index: 10;
+    }
+    .hero-content h2 {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+    }
+    .hero-content p {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+    }
+    .btn {
+      background: #212121;
+      padding: 0.8rem 1.6rem;
+      border: none;
+      border-radius: 50px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .btn:hover {
+      background: #000;
+    }
+    /* odstępy między sekcjami sekcje */
+    section {
+      padding: 60px 20px 30px;
+      max-width: 1000px;
+      margin: auto;
+      text-align: center;
+    }
+    section h2 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+    }
+    section p {
+      font-size: 1.05rem;
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+    /* My work */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 12px;
+      margin-top: 2rem;
+    }
+    .gallery img {
+      width: 100%;
+      border-radius: 12px;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+    /* zdjęcia extra */
+    .gallery img.extra {
+      display: none;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+    /* przycisk Show More */
+    #showMoreButton {
+      margin-top: 20px;
+      padding: 0.8rem 1.6rem;
+      background: #212121;
+      border: none;
+      border-radius: 50px;
+      color: #b3b3b3;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    #showMoreButton:hover {
+      background: #ff4c4c;
+    }
+    /* Sekcja Offers */
+    #offers {
+      padding: 60px 20px 30px;
+      max-width: 1000px;
+      margin: auto;
+      text-align: center;
+    }
+    #offers h2 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+    }
+    .offer-category {
+      margin: 40px 0;
+      text-align: left;
+    }
+    .offer-category h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    /* karty ofert */
+    #offers .offer {
+      max-width: 500px;
+      margin: 0 auto 20px;
+      background: rgba(0,0,0,0.8);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 25px rgba(255, 255, 255, 0.12);
+    }
+    #offers .offer img {
+      width: 100%;
+      aspect-ratio: 1/1;
+      object-fit: cover;
+      display: block;
+    }
+    #offers .offer-details {
+      background: rgba(0,0,0,0.8);
+      backdrop-filter: blur(5px);
+      padding: 10px 15px;
+      color: white;
+      text-align: left;
+    }
+    #offers .offer-details h4 {
+      margin: 0 0 5px;
+      font-size: 1.2rem;
+    }
+    #offers .offer-details .price {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    #offers .offer-details ul {
+      list-style: none;
+      padding: 0;
+      margin: 5px 0;
+    }
+    .offer.no-image {
+      background: rgba(0,0,0,0.8);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    }
+    .offer.no-image .offer-details {
+      padding-left: 15px;
+    }
+    footer {
+      background: #000;
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.9rem;
+      margin-top: 2rem;
+    }
+    footer .social-links a {
+      margin: 0 10px;
+      display: inline-block;
+    }
+    footer img {
+      filter: invert(1);
+      vertical-align: middle;
+    }
+    @keyframes slideUp {
+      0% {
+        opacity: 0;
+        visibility: hidden;
+        transform: translate(-50%, 0);
+      }
+      1% {
+        visibility: visible;
+      }
+      100% {
+        opacity: 1;
+        transform: translate(-50%, -20px);
+        visibility: visible;
+      }
+    }
+    /* Media query */
+    @media(max-width: 768px) {
+      nav {
+        padding: 0.5rem 1rem;
+        justify-content: space-around;
+      }
+      nav h1 {
+        font-size: 1.1rem;
+        padding: 2px 8px;
+      }
+      nav a {
+        margin-left: 10px;
+        font-size: 0.95rem;
+      }
+      .hero-content {
+        bottom: 3%;
+        padding: 1rem;
+      }
+      .hero-content h2 {
+        font-size: 1.7rem;
+      }
+      .hero-content p {
+        font-size: 1rem;
+      }
+      .offer {
+        width: 100%;
+      }
+      #offers .offer-details {
+        text-align: center;
+      }
+    }
+    /* lightbox modal swipe */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.9);
+      align-items: center;
+      justify-content: center;
+      touch-action: pan-x;
+    }
+    .modal-content {
+      max-width: 90%;
+      max-height: 80%;
+      animation: zoomIn 0.5s;
+      border-radius: 10px;
+    }
+    .close {
+      position: absolute;
+      top: 15px;
+      right: 35px;
+      color: #f1f1f1;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .close:hover,
+    .close:focus {
+      color: #bbb;
+      text-decoration: none;
+    }
+    @keyframes zoomIn {
+      from { transform: scale(0.8); }
+      to   { transform: scale(1); }
+    }
+    /* sekcja contact */
+    #contact .contact-info {
+      max-width: 500px;
+      margin: 2rem auto 0;
+      text-align: left;
+    }
+    #contact .contact-info p {
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+    }
+    #contact .map {
+      margin-top: 1rem;
+    }
+    #contact .map iframe {
+      width: 100%;
+      height: 300px;
+      border: 0;
+    }
+  </style>
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SH2TC2EQ77"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-SH2TC2EQ77');
+</script>
+<body>
+
+<header>
+  <nav>
+    <h1><img src="jo.png" alt="Joanna Art" style="height: 35px;"></h1>
+    <div>
+      <a href="#about">About</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#offers">Offers</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-content">
+    <h2>Hello, I'm Joanna</h2>
+    <p>Professional portrait &amp; wedding photographer based in The Hague.</p>
+    <a href="#contact"><button class="btn">Get in Touch</button></a>
+  </div>
+</section>
+
+<section id="about">
+  <h2>About Me</h2>
+  <p>My name is Joanna and I come from Poland. I have been living in the Netherlands for 16 years.</p>
+  <p>You know that friend who is always the photographer of the group? That was me. A few years ago I decided to change my hobby into a job as a professional photographer.</p>
+  <p>I started by photographing newborns and birthday celebrations, but over time I discovered that portrait photography is what I truly love. Capturing genuine emotions and real moments is what inspires me most.</p>
+  <p>I create images that reflect people as they are, capturing their happiest and most honest moments - this is where my passion lies.</p>
+</section>
+
+<section id="portfolio">
+  <h2>My Works</h2>
+  <div class="gallery">
+    <!-- extra -->
+    <img src="1.jpg" alt="Artwork 1" class="extra">
+    <img src="2.jpg" alt="Artwork 2" class="extra">
+    <img src="3.jpg" alt="Artwork 3" class="extra">
+    <img src="4.jpg" alt="Artwork 4" class="extra">
+    <img src="5.jpg" alt="Artwork 5" class="extra">
+    <img src="6.jpg" alt="Artwork 6" class="extra">
+    <img src="7.jpg" alt="Artwork 7" class="extra">
+    <img src="8.jpg" alt="Artwork 8" class="extra">
+    <img src="9.jpg" alt="Artwork 9" class="extra">
+    <img src="10.jpg" alt="Artwork 10" class="extra">
+    <img src="11.jpg" alt="Artwork 11" class="extra">
+    <img src="12.jpg" alt="Artwork 12" class="extra">
+    <img src="13.jpg" alt="Artwork 13" class="extra">
+    <img src="14.jpg" alt="Artwork 14">
+    <img src="15.jpg" alt="Artwork 15" class="extra">
+    <img src="18.jpg" alt="Artwork 18" class="extra">
+    <img src="19.jpg" alt="Artwork 19">
+    <img src="16.jpg" alt="Artwork 16" class="extra">
+    <img src="17.jpg" alt="Artwork 17" class="extra">
+    <img src="84.jpg" alt="Artwork 84">
+    <img src="04.jpg" alt="Artwork 04" class="extra">
+    <img src="03.jpg" alt="Artwork 03" class="extra">
+    <img src="20.jpg" alt="Artwork 20" class="extra">
+    <img src="22.jpg" alt="Artwork 22" class="extra">
+    <img src="23.jpg" alt="Artwork 23" class="extra">
+    <img src="24.jpg" alt="Artwork 24" class="extra">
+    <img src="28.jpg" alt="Artwork 28" class="extra">
+    <img src="30.jpg" alt="Artwork 30" class="extra">
+    <img src="29.jpg" alt="Artwork 29">
+    <img src="25.jpg" alt="Artwork 25" class="extra">
+    <img src="26.jpg" alt="Artwork 26" class="extra">
+    <img src="27.jpg" alt="Artwork 27">
+    <img src="21.jpg" alt="Artwork 21">
+    <img src="31.jpg" alt="Artwork 31" class="extra">
+    <img src="32.png" alt="Artwork 32" class="extra">
+    <img src="33.jpg" alt="Artwork 33" class="extra">
+    <img src="34.jpg" alt="Artwork 34" class="extra">
+  </div>
+  <button id="showMoreButton">Show More</button>
+</section>
+
+
+<section id="offers">
+  <h2>Offers</h2>
+  <div class="offer-category">
+    <h3>Wedding Sessions</h3>
+    <div class="offer">
+      <img src="01.jpg" alt="1 hour pre wedding photoshoot">
+      <div class="offer-details">
+        <h4>1 hour pre wedding photoshoot</h4>
+        <p class="price">200&euro;</p>
+        <ul>
+          <li>10 professionally edited photos</li>
+          <li>Digital version</li>
+          <li>Print one selected photo (30 x 45)</li>
+        </ul>
+      </div>
+    </div>
+    <div class="offer">
+      <img src="02.jpg" alt="2 hour Loveshoot">
+      <div class="offer-details">
+        <h4>2 hour Loveshoot</h4>
+        <p class="price">300&euro;</p>
+        <ul>
+          <li>25 - 50 digital version photos</li>
+          <li>Delivery within 4 weeks</li>
+        </ul>
+      </div>
+    </div>
+    <div class="offer">
+      <img src="03.jpg" alt="4 hour Brown package">
+      <div class="offer-details">
+        <h4>4 hour Brown package</h4>
+        <p class="price">550&euro;</p>
+        <ul>
+          <li>100 - 150 digital version photos</li>
+          <li>Delivery within 4 weeks</li>
+        </ul>
+      </div>
+    </div>
+    <div class="offer">
+      <img src="04.jpg" alt="6 hour Silver package">
+      <div class="offer-details">
+        <h4>6 hour Silver package</h4>
+        <p class="price">800&euro;</p>
+        <ul>
+          <li>150 - 250 digital version photos</li>
+          <li>Delivery within 4 weeks</li>
+        </ul>
+      </div>
+    </div>
+    <div class="offer">
+      <img src="05.jpg" alt="8 hour Gold package">
+      <div class="offer-details">
+        <h4>8 hour Gold package</h4>
+        <p class="price">1100&euro;</p>
+        <ul>
+          <li>250 - 400 digital version photos</li>
+          <li>Delivery within 4 weeks</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="offer-category">
+    <h3>Portraits</h3>
+    <div class="offer no-image">
+      <div class="offer-details">
+        <h4>1 hour session</h4>
+        <p class="price">150&euro;</p>
+        <ul>
+          <li>5 professionally edited photos</li>
+          <li>Digital versions</li>
+          <li>Delivery within 2 weeks</li>
+          <li>Each additional photo - 10&euro;</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="offer-category">
+    <h3>Reportage</h3>
+    <div class="offer no-image">
+      <div class="offer-details">
+        <h4>1 hour</h4>
+        <p class="price">100&euro;</p>
+        <ul>
+          <li>Digital version photos</li>
+          <li>Delivery within 4 weeks</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Sekcja Contact -->
+<section id="contact">
+  <h2>Contact Me</h2>
+  <div class="contact-info">
+    <a href="mailto:joannaartymiuk@gmail.com" class="no-style"><p><strong>Email:</strong> joannaartymiuk@gmail.com</p></a>
+    <a href="tel:+31687019683" class="no-style"><p><strong>Phone:</strong> +31 687 019 683</p></a>
+    <form
+      action="https://formspree.io/f/mgvyzoog"
+      method="POST"
+      class="custom-form-container"
+    >
+      <label class="custom-form-label">
+        Your email:
+        <input
+          name="email"
+          class="custom-form-input"
+          required
+        >
+      </label>
+      <label class="custom-form-label">
+        Your message:
+        <textarea
+          name="message"
+          class="custom-form-textarea"
+          required
+          placeholder="Ask us a question and we will answer it as soon as possible"
+        ></textarea>
+      </label>
+      <button type="submit" class="custom-form-button">Send</button>
+    </form>
+    <div class="map">
+    	<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2453.456918227396!2d4.2998774!3d52.0532034!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c5b6c91899063d%3A0x201c79f82d884e93!2sVan%20Maerlantlaan%2082%2C%202531%20ET%20Den%20Haag%2C%20Holandia!5e0!3m2!1spl!2spl!4v1751113757442!5m2!1spl!2spl" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2025 Joanna Art Photography — All rights reserved.</p>
+  <div class="social-links" style="margin-top: 10px;">
+    <a href="https://www.instagram.com/joannaart.photo/" target="_blank">
+      <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/instagram.svg" alt="Instagram" width="24">
+    </a>
+    <a href="https://www.facebook.com/JoannaArt.fotografia" target="_blank">
+      <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/facebook.svg" alt="Facebook" width="24">
+    </a>
+  </div>
+</footer>
+
+<!-- lightmodal swipe -->
+<div id="modal" class="modal">
+  <span class="close">&times;</span>
+  <img class="modal-content" id="modalImage" alt="Enlarged Image">
+</div>
+
+<script>
+  //lightbox
+  const modal = document.getElementById("modal");
+  const modalImg = document.getElementById("modalImage");
+  const closeBtn = document.querySelector(".close");
+  const galleryImages = document.querySelectorAll(".gallery img");
+  
+  let currentIndex = 0;
+  const images = Array.from(galleryImages);
+  
+  galleryImages.forEach((img, index) => {
+    img.addEventListener("click", function() {
+      modal.style.display = "flex";
+      modalImg.src = this.src;
+      currentIndex = index;
+    });
+  });
+  
+  closeBtn.addEventListener("click", function() {
+    modal.style.display = "none";
+  });
+  
+  modal.addEventListener("click", function(e) {
+    if (e.target === modal) {
+      modal.style.display = "none";
+    }
+  });
+  
+  // swipe
+  let xDown = null;
+  let yDown = null;
+  
+  modal.addEventListener("touchstart", function(evt) {
+    const firstTouch = evt.touches[0];
+    xDown = firstTouch.clientX;
+    yDown = firstTouch.clientY;
+  }, false);
+  
+  modal.addEventListener("touchmove", function(evt) {
+    if (!xDown || !yDown) return;
+    let xUp = evt.touches[0].clientX;
+    let yUp = evt.touches[0].clientY;
+    let xDiff = xDown - xUp;
+    if (Math.abs(xDiff) > 0) {
+      if (xDiff > 0) {
+        // Swipe l
+        currentIndex = (currentIndex + 1) % images.length;
+        modalImg.src = images[currentIndex].src;
+      } else {
+        // Swipe r
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        modalImg.src = images[currentIndex].src;
+      }
+    }
+    xDown = null;
+    yDown = null;
+  }, false);
+  
+  // Show More
+  const showMoreButton = document.getElementById("showMoreButton");
+  if (showMoreButton) {
+    showMoreButton.addEventListener("click", () => {
+      const extraImages = document.querySelectorAll(".gallery img.extra");
+      extraImages.forEach(img => {
+        img.style.display = "block";
+        setTimeout(() => {
+          img.style.opacity = "1";
+        }, 50);
+      });
+      showMoreButton.style.display = "none";
+    });
+  }
+let lastScroll = window.pageYOffset;
+let hideTimeout;
+
+window.addEventListener("scroll", function () {
+  const currentScroll = window.pageYOffset;
+  const header = document.querySelector("header");
+  const scrollHeight = document.documentElement.scrollHeight;
+  const windowHeight = window.innerHeight;
+  const scrollPosition = currentScroll + windowHeight;
+
+  const isNearBottom = scrollPosition >= scrollHeight * 0.85;
+  const isNearTop = currentScroll <= scrollHeight * 0.1;
+
+  if (currentScroll > lastScroll && !isNearBottom && !isNearTop) {
+    // Scroll w dół
+    clearTimeout(hideTimeout);
+    hideTimeout = setTimeout(() => {
+      header.style.top = "-100px";
+    }, 300);
+  } else {
+    // Scroll w górę
+    clearTimeout(hideTimeout);
+    header.style.top = "0";
+  }
+
+  lastScroll = currentScroll;
+});
+
+</script>
+
+</body>
+</html>
